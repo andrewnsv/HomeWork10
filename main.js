@@ -26,7 +26,6 @@ btn2.addEventListener("click", function (e) {
 });
 
 outSideClick[0].addEventListener("click", function (e) {
-  e.stopPropagation();
   selectedElement.innerHTML = "";
 });
 
