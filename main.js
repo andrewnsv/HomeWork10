@@ -3,7 +3,7 @@ const selectedElement = document.querySelector("#res");
 const btn1 = document.querySelector("#btn1");
 const btn2 = document.querySelector("#btn2");
 const out2 = document.querySelector("#out2");
-const outSideClick = document.getElementsByTagName("body");
+const outSideClick = document.getElementsByTagName("html");
 
 const input = document.querySelector("#text");
 const myBtn = document.querySelector("#myBtn");
@@ -25,7 +25,8 @@ btn2.addEventListener("click", function (e) {
   selectedElement.innerHTML = "Button 2 was clicked";
 });
 
-outSideClick[0].addEventListener("click", function () {
+outSideClick[0].addEventListener("click", function (e) {
+  e.stopPropagation();
   selectedElement.innerHTML = "";
 });
 
