@@ -15,34 +15,27 @@ divs.addEventListener("click", (e) => {
   selectedElement.textContent = getAttr;
 });
 
-btn1.addEventListener("click", function (e) {
+btn1.addEventListener("click", (e) => {
   e.stopPropagation();
   selectedElement.innerHTML = "Button 1 was clicked";
 });
 
-btn2.addEventListener("click", function (e) {
+btn2.addEventListener("click", (e) => {
   e.stopPropagation();
   selectedElement.innerHTML = "Button 2 was clicked";
 });
 
-outSideClick[0].addEventListener("click", function (e) {
+outSideClick[0].addEventListener("click", (e) => {
   selectedElement.innerHTML = "";
 });
 
-input.addEventListener("input", (event) => {
-  if (event.target.value === "") {
-    myBtn.disabled = true;
-    out2.textContent = "String is empty"
-    return;
+input.addEventListener("input", function (e) {
+  if(e.target.value !== '') {
+    myBtn.disabled = false;
   }
-  for (const letter of event.target.value) {
-    if (letter >= "A" && letter <= "Z" || letter >= "А" && letter <= "Я") {
-      myBtn.disabled = true;
-      out2.textContent = "It`s forbidden to enter capital letters"
-      return;
-    }
-  }
-  myBtn.disabled = false;
+  const characters = e.target.value.split("");
+  const filtered = characters.filter((c) => !(c >= "A" && c <= "Z" || c >= "А" && c <= "Я"));
+  e.target.value = filtered.join("");
 });
 
 myBtn.addEventListener("click", () => {
